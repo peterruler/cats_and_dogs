@@ -66,6 +66,7 @@ Youtube deutsch Pytorch Cats & Dogs CV:
 
 https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition
 in a folder named `catdog/train` and `catdog/test`
+(to kaggle.com, login with google)
 
 # Download the cats and dogs dataset (additional)
 
