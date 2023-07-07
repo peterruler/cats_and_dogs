@@ -3,7 +3,7 @@
 - Explanation: https://www.youtube.com/watch?v=VEDy-c5Sk8Y
 - Source: https://github.com/jeffheaton/t81_558_deep_learning/tree/pytorch/install
 
-# Uninstall anaconda (if you have a previous installation)
+# Uninstall anaconda (if you have a previous installation, otherwise please skip this paragraph)
 
 - https://docs.anaconda.com/free/anaconda/install/uninstall/
 - `conda install anaconda-clean`
