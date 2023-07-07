@@ -1,4 +1,4 @@
-# Apple Silicon M1 install Pytoch
+# Apple Silicon M1 install Pytorch
 
 - Explanation: https://www.youtube.com/watch?v=VEDy-c5Sk8Y
 - Source: https://github.com/jeffheaton/t81_558_deep_learning/tree/pytorch/install
@@ -70,10 +70,12 @@ in a folder named `catdog/train` and `catdog/test`
 # Download the cats and dogs dataset (additional)
 
 Additional traningdata not used in this exercise (login with google):
-
+````
 wget --no-check-certificate \
     https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip \
     -O cats_and_dogs_filtered.zip
+````
+
 
 
 https://www.kaggle.com/code/adinishad/pytorch-cats-and-dogs-classification
