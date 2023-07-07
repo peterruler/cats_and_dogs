@@ -113,4 +113,4 @@ def test():
 
 for epoch in range(1,30):
     train(epoch)
-test()
+    test()
