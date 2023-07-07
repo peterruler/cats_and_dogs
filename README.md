@@ -1,0 +1,85 @@
+# Apple Silicon M1 install Pytoch
+
+- Explanation: https://www.youtube.com/watch?v=VEDy-c5Sk8Y
+- Source: https://github.com/jeffheaton/t81_558_deep_learning/tree/pytorch/install
+
+# Uninstall anaconda (if you have a previous installation)
+
+- https://docs.anaconda.com/free/anaconda/install/uninstall/
+- `conda install anaconda-clean`
+- `anaconda-clean --yes`
+``` 
+sudo rm -rf anaconda3
+sudo rm -rf ~/anaconda3
+sudo rm -rf ~/opt/anaconda3
+
+```
+
+- `Ctrl+Shift+p` enter `code` add to PATH
+```
+source  ~/.bash_profile
+# in a VSCode terminal, type in:
+sudo code  ~/.bash_profile  
+```
+
+# Install miniconda for ARM64 M1 Mac
+
+- https://docs.conda.io/en/latest/miniconda.html
+
+- To Check:
+```
+> python
+> install platform
+> platform.platform()
+# outputs:
+'macOS-13.4.1-arm64-arm-64bit'
+```
+
+- `conda install -y jupyter` install jupyter notebook (optional)
+
+# Development environment
+
+- IDE, VS Code download: https://code.visualstudio.com/
+- Check Python `python --version` and `which python`
+- I had a previous  `brew install python` which worked well
+- Use visualstudio code (free) in combination with coderunner plugin, press play to run actual python script
+
+# Pytorch Cats & Dogs Tutorial (German)
+
+Youtube deutsch Pytorch Cats & Dogs CV:
+
+- #13 https://www.youtube.com/watch?v=32lHVbT09h8
+- #14 https://www.youtube.com/watch?v=cNwMpWt6IHk
+- #15 https://www.youtube.com/watch?v=Zj5QkjmYmBI
+- #16 https://www.youtube.com/watch?v=dDO7ihzkoC4
+- #17 https://www.youtube.com/watch?v=RkcRqphggLY
+- #18 https://www.youtube.com/watch?v=ulCylfDJRKo
+- #19 https://www.youtube.com/watch?v=kabjuJWLvus
+- #20 https://www.youtube.com/watch?v=26esNjWkEHA
+- #21 https://www.youtube.com/watch?v=PjlFR-PdwXk
+- #22 https://www.youtube.com/watch?v=P08d-1RnczM
+- #23 https://www.youtube.com/watch?v=rJUZfEJZas8
+
+# Unzip dataset and create working directory
+
+- trainingdata used in this exercise, is from: 
+
+https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition
+in a folder named `catdog/train` and `catdog/test`
+
+# Download the cats and dogs dataset (additional)
+
+Additional traningdata not used in this exercise (login with google):
+
+wget --no-check-certificate \
+    https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip \
+    -O cats_and_dogs_filtered.zip
+
+
+https://www.kaggle.com/code/adinishad/pytorch-cats-and-dogs-classification
+````
+unzip cats_and_dogs_filtered.zip
+mkdir -p cats_and_dogs/train
+mv cats_and_dogs_filtered/train/cats/* cats_and_dogs/train
+mv cats_and_dogs_filtered/train/dogs/* cats_and_dogs/train
+`````
