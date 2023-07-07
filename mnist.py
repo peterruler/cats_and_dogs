@@ -107,7 +107,7 @@ def test():
     img_eval_tensor.unsqueeze_(0)
     data = Variable(img_eval_tensor.to("mps"))
     out = model(data)
-    print(out.data.max(1,keepdim=True)[1])  # dim 1: 1 is Cat - 0 is dog
+    print(out.data.max(1,keepdim=True)[1])  # dim 1: 0 is Cat - 1 is dog
     img.show()
     x = input('')
 
