@@ -44,7 +44,7 @@ for i in range(len(listdir('catdog/train/'))) :
        print('Loaded batch ', len(train_data), 'of', int(len(listdir('catdog/train/'))))
        print('Percentage Done: ', 100*len(train_data) /int(len(listdir('catdog/train/'))), 'of', int(len(listdir('catdog/train/'))))
        # print(train_data)
-       if len(train_data) > 2: # change number of trainings
+       if len(train_data) > 10: # change number of trainings
         break
 
 class Netz(nn.Module):
@@ -107,7 +107,12 @@ def test():
     img_eval_tensor.unsqueeze_(0)
     data = Variable(img_eval_tensor.to("mps"))
     out = model(data)
-    print(out.data.max(1,keepdim=True)[1])  # dim 1: 0 is Cat - 1 is dog
+    isa = 'dog'
+    if (int(out.data.max(1,keepdim=True)[1].tolist()[0][0]) == 0) :  # dim 1: 0 is Cat - 1 is dog
+        isa = 'cat'
+    
+    print('is a: ' , isa )
+
     img.show()
     x = input('')
 
