@@ -35,8 +35,6 @@ sudo code  ~/.bash_profile
 'macOS-13.4.1-arm64-arm-64bit'
 ```
 
-- `conda install -y jupyter` install jupyter notebook (optional)
-
 # Development environment
 
 - IDE, VS Code download: https://code.visualstudio.com/
@@ -86,3 +84,11 @@ mkdir -p cats_and_dogs/train
 mv cats_and_dogs_filtered/train/cats/* cats_and_dogs/train
 mv cats_and_dogs_filtered/train/dogs/* cats_and_dogs/train
 `````
+
+# Jupyter Notbook
+
+- https://www.youtube.com/watch?v=2WL-XTl2QYI
+
+- `conda install -y jupyter` install jupyter notebook
+- `which jupyter` outputs:
+- `/Users/peterstroessler/miniconda3/bin/jupyter notebook`
