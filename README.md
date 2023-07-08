@@ -90,5 +90,5 @@ mv cats_and_dogs_filtered/train/dogs/* cats_and_dogs/train
 - https://www.youtube.com/watch?v=2WL-XTl2QYI
 
 - `conda install -y jupyter` install jupyter notebook
-- `which jupyter` outputs `Users/peterstroessler/miniconda3/bin/jupyter` (add to your PATH)
+- `which jupyter` outputs something like `Users/peterstroessler/miniconda3/bin/jupyter` (add to your PATH)
 - to run call `/Users/peterstroessler/miniconda3/bin/jupyter notebook`
