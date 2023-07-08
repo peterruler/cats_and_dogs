@@ -85,7 +85,7 @@ mv cats_and_dogs_filtered/train/cats/* cats_and_dogs/train
 mv cats_and_dogs_filtered/train/dogs/* cats_and_dogs/train
 `````
 
-# Jupyter Notbook
+# Jupyter Notebook
 
 - https://www.youtube.com/watch?v=2WL-XTl2QYI
 
