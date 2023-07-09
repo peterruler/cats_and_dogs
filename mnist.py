@@ -77,8 +77,10 @@ class Netz(nn.Module):
         print(x.size())
         exit()
 
-model = Netz()
+model = Netz() # on train - on test remove
+# model = torch.load('model.pth')
 model.to("mps") # no gpu on m1 mac, use mps
+torch.save(model,'model.pth') # on train - on test remove
 
 optimizer = optim.Adam(model.parameters(), lr=0.01)
 def train(epoch) :
@@ -117,6 +119,8 @@ def test():
     img.show()
     x = input('')
 
+# on test remove train loop
 for epoch in range(1,30):
-    train(epoch)
+   train(epoch)
+# just test model
 test()
