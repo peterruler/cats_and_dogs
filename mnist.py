@@ -20,6 +20,11 @@ transform = transforms.Compose([
     transforms.ToTensor(),
     normalize])
 
+
+trainOrTest = input('Please enter train or test: $> ')
+if trainOrTest == 'train' :
+    nrOfTraings = input('Please enter number of trainings: $> ')
+
 # TARGET: [isCat, isDog]
 train_data_list = []
 target_list = []
@@ -44,9 +49,9 @@ for i in range(len(listdir('catdog/train/'))) :
        print('Loaded batch ', len(train_data), 'of', int(len(listdir('catdog/train/'))))
        print('Percentage Done: ', 100*len(train_data) /int(len(listdir('catdog/train/'))), 'of', int(len(listdir('catdog/train/'))))
        # print(train_data)
-       if len(train_data) > 5: # change number of trainings
-        break
-
+       if trainOrTest == 'test' :
+            if len(train_data) > 0 :
+                break
 class Netz(nn.Module):
     def __init__(self):
         super(Netz,self).__init__()
@@ -77,10 +82,14 @@ class Netz(nn.Module):
         print(x.size())
         exit()
 
-model = Netz() # on train - on test remove
-# model = torch.load('model.pth')
+if trainOrTest == 'train' : 
+    model = Netz()
+else :
+    if trainOrTest == 'test' :
+        model = torch.load('model.pth')
 model.to("mps") # no gpu on m1 mac, use mps
-torch.save(model,'model.pth') # on train - on test remove
+if trainOrTest == 'train' : 
+    torch.save(model,'model.pth')
 
 optimizer = optim.Adam(model.parameters(), lr=0.01)
 def train(epoch) :
@@ -88,7 +97,7 @@ def train(epoch) :
     batch_id = 0
     for data, target in train_data:
         data = data.to("mps")
-        target = torch.Tensor(target).to("mps") #m1 without gpu .cuda(), use .to("mps") instead
+        target = torch.Tensor(target).to("mps") # m1 without gpu .cuda(), use .to("mps") instead
         data = Variable(data)
         target = Variable(target)
         optimizer.zero_grad()
@@ -119,8 +128,9 @@ def test():
     img.show()
     x = input('')
 
-# on test remove train loop
-for epoch in range(1,30):
-   train(epoch)
-# just test model
-test()
+if trainOrTest == 'train' :
+    for epoch in range(1,30):
+        train(epoch)
+else :
+    if trainOrTest == 'test' :
+        test()
