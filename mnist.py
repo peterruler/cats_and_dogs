@@ -82,7 +82,7 @@ class Netz(nn.Module):
 if trainOrTest == 'train' : 
     model = Netz()
 elif trainOrTest == 'test' :
-        model = torch.load('model.pth')
+    model = torch.load('model.pth')
 model.to("mps") # no gpu on m1 mac, use mps
 if trainOrTest == 'train' : 
     torch.save(model,'model.pth')
