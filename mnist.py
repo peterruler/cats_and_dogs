@@ -47,9 +47,8 @@ for i in range(len(listdir('catdog/train/'))) :
        print('Loaded batch ', len(train_data), 'of', int(len(listdir('catdog/train/'))))
        print('Percentage Done: ', 100*len(train_data) /int(len(listdir('catdog/train/'))), 'of', int(len(listdir('catdog/train/'))))
        # print(train_data)
-       if trainOrTest == 'test' :
-            if len(train_data) > 0 :
-                break
+       if trainOrTest == 'test' and len(train_data) > 0 :
+            break
 class Netz(nn.Module):
     def __init__(self):
         super(Netz,self).__init__()
@@ -82,8 +81,7 @@ class Netz(nn.Module):
 
 if trainOrTest == 'train' : 
     model = Netz()
-else :
-    if trainOrTest == 'test' :
+elif trainOrTest == 'test' :
         model = torch.load('model.pth')
 model.to("mps") # no gpu on m1 mac, use mps
 if trainOrTest == 'train' : 
@@ -129,6 +127,5 @@ def test():
 if trainOrTest == 'train' :
     for epoch in range(1,30):
         train(epoch)
-else :
-    if trainOrTest == 'test' :
-        test()
+elif trainOrTest == 'test' :
+    test()
