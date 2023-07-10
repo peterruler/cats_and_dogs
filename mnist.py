@@ -22,8 +22,6 @@ transform = transforms.Compose([
 
 
 trainOrTest = input('Please enter train or test: $> ')
-if trainOrTest == 'train' :
-    nrOfTraings = input('Please enter number of trainings: $> ')
 
 # TARGET: [isCat, isDog]
 train_data_list = []
