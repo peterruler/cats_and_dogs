@@ -96,7 +96,7 @@ mv cats_and_dogs_filtered/train/dogs/* cats_and_dogs/train
 
 - `conda install -y jupyter` install jupyter notebook
 - `which jupyter` outputs something like `Users/peterstroessler/miniconda3/bin/jupyter` (add to your PATH)
-- to run call `/Users/peterstroessler/miniconda3/bin/jupyter notebook`
+- to run call something like (with your username) `/Users/peterstroessler/miniconda3/bin/jupyter notebook`
 
 
 # OpenCV
