@@ -1,6 +1,7 @@
 # Apple Silicon M1 install Pytorch
 
 - Explanation: https://www.youtube.com/watch?v=VEDy-c5Sk8Y
+- Commands: https://github.com/jeffheaton/t81_558_deep_learning/blob/pytorch/install/pytorch-install-aug-2022.ipynb
 - Source: https://github.com/jeffheaton/t81_558_deep_learning/tree/pytorch/install
 
 # Uninstall anaconda (if you have a previous installation, otherwise please skip this paragraph)
@@ -34,6 +35,10 @@ sudo code  ~/.bash_profile
 # outputs:
 'macOS-13.4.1-arm64-arm-64bit'
 ```
+
+# Activate pytorch when torch isn't found
+ 
+ - `conda activate torch`
 
 # Development environment
 
@@ -92,3 +97,51 @@ mv cats_and_dogs_filtered/train/dogs/* cats_and_dogs/train
 - `conda install -y jupyter` install jupyter notebook
 - `which jupyter` outputs something like `Users/peterstroessler/miniconda3/bin/jupyter` (add to your PATH)
 - to run call `/Users/peterstroessler/miniconda3/bin/jupyter notebook`
+
+
+# OpenCV
+
+- `# import cv2` (cv2 is obsolete)
+
+
+# Second implementation of cats and dogs (working)
+
+- https://github.com/vashiegaran/Pytorch-CNN-with-cats-and-dogs-/blob/main/CatvsDog.ipynb
+
+```
+conda activate torch
+# new gernerate csv evaluation
+python CatDog2.py 
+```
+
+# Load train and test data replace with your path
+```
+train_dir = '/Users/peterstroessler/Documents/Projects/cats_and_dogs/catdog/train'
+test_dir = '/Users/peterstroessler/Documents/Projects/cats_and_dogs/catdog/test'
+import glob
+
+train_list = glob.glob(os.path.join(train_dir,'*.jpg'))
+test_list = glob.glob(os.path.join(test_dir, '*.jpg'))
+```
+
+# Display sample image source in plot
+
+```
+#original
+random_idx = np.random.randint(1,1000,size=10)
+
+fig = plt.figure()
+i=1
+for idx in random_idx:
+    ax = fig.add_subplot(2,5,i)
+    img = Image.open(train_list[idx])
+    plt.imshow(img)
+    i+=1
+
+plt.axis('off')
+plt.show()
+```
+
+# Demo / Run Test.py
+- Test / read of bulk (already evaluated) csv file!
+- In a console run: `python Test.py`

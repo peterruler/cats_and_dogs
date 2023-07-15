@@ -9,6 +9,12 @@ from torch.autograd import Variable
 import torch.nn.functional as F
 import torch.nn as nn
 
+device="cuda" if torch.cuda.is_available() else "cpu"
+
+torch.manual_seed(1234)
+if device == 'cuda':
+    torch.cuda.manual_seed_all(1234)
+
 normalize = transforms.Normalize(
     mean = [0.485, 0.456, 0.406],
     std = [0.229, 0.224, 0.225]
@@ -83,7 +89,7 @@ if trainOrTest == 'train' :
     model = Netz()
 elif trainOrTest == 'test' :
     model = torch.load('model.pth')
-model.to("mps") # no gpu on m1 mac, use mps
+model.to(device) # no gpu on m1 mac, use cpu
 if trainOrTest == 'train' : 
     torch.save(model,'model.pth')
 
@@ -92,8 +98,8 @@ def train(epoch) :
     model.train()
     batch_id = 0
     for data, target in train_data:
-        data = data.to("mps")
-        target = torch.Tensor(target).to("mps") # m1 without gpu .cuda(), use .to("mps") instead
+        data = data.to(device) # or just without data.cuda()
+        target = torch.Tensor(target).to(device) # or just without .cuda() in torch.Tensor(target).cuda()
         data = Variable(data)
         target = Variable(target)
         optimizer.zero_grad()
@@ -102,7 +108,7 @@ def train(epoch) :
         loss = criterion(out,target)
         loss.backward()
         optimizer.step()
-        print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(epoch, batch_id * len(data), len(train_data), 100 * batch_id / len(train_data), loss.data))
+        print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(epoch, batch_id * len(data), len(train_data), 100 * batch_id / len(train_data), loss.data / 100))
         batch_id = batch_id + 1
 
 def test():
@@ -112,7 +118,7 @@ def test():
     img = Image.open('catdog/test/' + f)
     img_eval_tensor = transform(img)
     img_eval_tensor.unsqueeze_(0)
-    data = Variable(img_eval_tensor.to("mps"))
+    data = Variable(img_eval_tensor.to(device))
     out = model(data)
     isa = 'dog'
     if (int(out.data.max(1,keepdim=True)[1].tolist()[0][0]) == 0) :  # dim 1: 0 is Cat - 1 is dog
