@@ -24,7 +24,7 @@ import zipfile
 
 lr =0.001
 batch_size=100
-epochs = 10
+epochs = 100
 
 device="cuda" if torch.cuda.is_available() else "cpu"
 
@@ -163,11 +163,11 @@ model.train()
 optimizer = optim.Adam(params = model.parameters(),lr =0.001)
 criterion = nn.CrossEntropyLoss()
 
-epochs = 10
+epochs = 100
 
 for epoch in range(epochs):
  
-    epoch_loss =0
+    epoch_loss = 0
     epoch_accuracy = 0
     for data,label in train_loader:
         data= data.to(device)
@@ -187,7 +187,7 @@ for epoch in range(epochs):
         print('Epoch : {}, train accuracy : {}, train loss : {}'.format(epoch+1, epoch_accuracy,epoch_loss))
         
     with torch.no_grad():
-        epoch_val_accuracy =0
+        epoch_val_accuracy = 0
         epoch_val_loss = 0
         for data,label in  val_loader:
             data= data.to(device)
@@ -213,14 +213,14 @@ with torch.no_grad():
         dog_probs += list(zip(list(fileid), preds_list))
 
 dog_probs.sort(key = lambda x: int(x[0]))
-# print(dog_probs)
+print(dog_probs)
 
 idx = list(map(lambda x :x[0],dog_probs))
 prob = list(map(lambda x :x[1],dog_probs))
 submission = pd.DataFrame({'id':idx, 'label':prob})
-# print(submission)
+print(submission)
 
-submission.to_csv('result2.csv',index=False)
+submission.to_csv('result.csv',index=False)
 
 import random
 

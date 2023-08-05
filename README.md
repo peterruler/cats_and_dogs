@@ -145,3 +145,8 @@ plt.show()
 # Demo / Run Test.py
 - Test / read of bulk (already evaluated) csv file!
 - In a console run: `python Test.py`
+
+# demo
+
+`conda activte torch`
+`python catsanddogs.py` with the option `test`
