@@ -147,6 +147,10 @@ plt.show()
 - In a console run: `python Test.py`
 
 # demo
+install Pytorch
 
-`conda activte torch`
-`python catsanddogs.py` with the option `test`
+in a console cd to your workingdir
+run `conda activte torch`
+and
+
+run `python catsanddogs.py` with the option `test`
