@@ -88,7 +88,8 @@ class Netz(nn.Module):
 if trainOrTest == 'train' : 
     model = Netz()
 elif trainOrTest == 'test' :
-    model  = Netz()
+    # model  = Netz()
+    model = torch.load('model.pth')
     model.load_state_dict(torch.load('model.pt'))
     optimizer = optim.Adam(model.parameters(), lr=0.001)
     optimizer.load_state_dict(torch.load('optimizer.pt'))
