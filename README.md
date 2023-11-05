@@ -150,7 +150,7 @@ plt.show()
 install Pytorch
 
 in a console cd to your workingdir
-run `conda activte torch`
+run `conda activate torch`
 and
 
 run `python catsanddogs.py` with the option `test`
